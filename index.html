@@ -1,4 +1,221 @@
+<!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片轮播Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slider-container {
+            width: 100%;
+            height: 400px; /* 根据图片调整高度 */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保持图片比例并填满容器 */
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: white;
+        }
+        
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 20px;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .slider-arrow.prev {
+            left: 20px;
+        }
+        
+        .slider-arrow.next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .slider-container {
+                height: 300px;
+            }
+            
+            .slider-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Picture1 -->
+            <div class="slide">
+                <img src="Picture1.jpg" alt="Banner图片1">
+            </div>
+            <div class="slide">
+                <img src="Picture2.jpg" alt="Banner图片2">
+            </div>
+            <div class="slide">
+                <img src="Picture3.jpg" alt="Banner图片3">
+            </div>
+            <div class="slide">
+                <img src="Picture4.jpg" alt="Banner图片3">
+            </div>
+            <div class="slide">
+                <img src="Picture5.jpg" alt="Banner图片3">
+            </div>
+        </div>
+        
+        <!-- 导航箭头 -->
+        <div class="slider-arrow prev">&#10094;</div>
+        <div class="slider-arrow next">&#10095;</div>
+        
+        <!-- 导航点 -->
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            
+            // 更新轮播位置和活动点
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // 下一张
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            }
+            
+            // 上一张
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlider();
+            }
+            
+            // 点击导航点跳转
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                });
+            });
+            
+            // 按钮事件
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // 自动轮播
+            let autoSlide = setInterval(nextSlide, 5000);
+            
+            // 鼠标悬停时暂停自动轮播
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+            
+            sliderContainer.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(nextSlide, 5000);
+            });
+            
+            // 触摸滑动支持
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            sliderContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            sliderContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, {passive: true});
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide(); // 向左滑动，下一张
+                }
+                if (touchEndX > touchStartX + 50) {
+                    prevSlide(); // 向右滑动，上一张
+                }
+            }
+        });
+    </script>
+</body>
+</html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

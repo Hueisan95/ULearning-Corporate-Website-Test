@@ -1,0 +1,214 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULearning Smart Education Solutions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            display: flex;
+ justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #0066cc, #004080);
+            color: white;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+      .demo-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin-left: 20px;
+            box-shadow: 0 4px 0 #cc5600,
+                        0 6px 8px rgba(0, 0, 0, 0.15);
+            position: relative;
+            top: 0;
+        }
+        
+        .demo-btn:hover {
+            background-color: #ff7b20;
+            top: -2px;
+            box-shadow: 0 6px 0 #cc5600,
+                        0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .demo-btn:active {
+            top: 2px;
+            box-shadow: 0 2px 0 #cc5600;
+        }
+        */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #0066cc;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        .solutions-container {
+            display: flex;
+            flex-wrap: wrap:
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+      flex: 1;
+      width: 280px; 
+      height: 320px;
+      display: flex;
+        flex-direction: column;
+        overflow: hidden; /* 防止内容溢出 */
+    }
+    
+    .solution-card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: auto; /* 内容过多时显示滚动条 */
+    }
+    
+    .solution-card h2 {
+        color: #0066cc;
+        border-bottom: 2px solid #0066cc;
+        padding-bottom: 5px;
+        margin: 0 0 15px 0;
+        font-size: 1.3em;
+        line-height: 1.4;
+    }
+    
+    .solution-card .highlight {
+        font-style: italic;
+        color: #666;
+        margin: 0 0 15px 0;
+    }
+    
+    .solution-card ul {
+        padding-left: 20px;
+        margin: 0;
+        flex-grow: 1;
+    }
+    
+    .solution-card li {
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+    
+    @media (max-width: 1200px) {
+        .solution-card {
+            width: calc(33.33% - 25px);
+        }
+    }
+    
+    @media (max-width: 900px) {
+        .solution-card {
+            width: calc(50% - 25px);
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .solution-card {
+            width: 100%;
+            height: auto; 
+            min-height: 250px;
+        }
+    }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+<div class="header-content">
+            <h1>ULearning Smart Education Solutions</h1>
+            <p>Your Choice of the Intelligent Education</p>
+        </div>
+        <button class="demo-btn">Get a Demo</button>
+    </header>
+    
+    <div class="solutions-container">
+        <div class="solution-card">
+            <h2>Smart Classroom Solutions</h2>
+            <p class="highlight">The Next Generation Learning Space</p>
+          <li>Digital Classroom</li>
+          <li>Recording Classroom</li>
+          <li>Collaborative Classroom</li>
+        </div>
+        
+        <div class="solution-card">
+            <h2>Cloud-based Smart Education System Solutions</h2>
+            <p class="highlight">Anytime, anywhere, any devices</p>
+            <li>UClass Interactive System</li>
+          <li>ULearning Management System</li>
+          <li>U-Test System with AI Proctor</li>
+          <li>AI Learning Analysis(on-prem/SAAS)</li>
+          <li>National Level Smart Education Solution</li>
+        </div>
+        <div class="solution-card">
+            <h2>AI All-in-One Machine for Education</h2>
+          <p class="highlight">AI Workstation for Teachers,</p>
+          <p class="highlight">AI Learning Companion for Students</p>
+            <ul>
+                <li>All-in-One Machine:Huawei</li>
+                <li>Ascend + DeepSeek + ULearning AI Agents</li>
+              <li>AI Classroom Intelligent Services</li>
+              <li>AI Teaching & Learning Intelligent Services</li>
+            </ul>
+        </div>
+        <div class="solution-card">
+            <h2>AI-powered Content Development Solution</h2>
+          <p class="highlight">AI Courses, Knowledge Graph, Mastery, Personalized Learning</p>
+            <ul>
+                <li>AI Courses</li>
+                <li>Knowledge Graph</li>
+                <li>AI Workstation</li>
+                <li>AI Assistant for Teachers</li>
+              <li>AI Learning Companion for Students
+            </ul>
+        </div>
+        
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 ULearning Smart Education Solutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>
